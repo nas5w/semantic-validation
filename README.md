@@ -1,5 +1,7 @@
 # Semantic Validation
 
+[![Build Status](https://travis-ci.com/nas5w/semantic-validation.svg?branch=master)](https://travis-ci.com/nas5w/semantic-validation)
+
 This package enables the user to implement human-readable validation logic for javascript objects on the front or back end of an application.
 
 **This is a work in progress and should not be used in production**

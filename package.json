@@ -1,0 +1,14 @@
+{
+  "name": "semantic-validation",
+  "version": "0.0.1",
+  "description": "Semantic validation for javascript objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nick Scialli",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

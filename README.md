@@ -1,6 +1,6 @@
 # Semantic Validation
 
-[![Build Status](https://travis-ci.com/nas5w/semantic-validation.svg?branch=master)](https://travis-ci.com/nas5w/semantic-validation)
+[![Build Status](https://travis-ci.com/nas5w/semantic-validation.svg?branch=master)](https://travis-ci.com/nas5w/semantic-validation) [![Codecov Status](https://codecov.io/gh/nas5w/semantic-validation/branch/master/graph/badge.svg)](https://codecov.io/gh/nas5w/semantic-validation/branch/master)
 
 This package enables the user to implement human-readable validation logic for javascript objects on the front or back end of an application.
 

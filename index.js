@@ -37,9 +37,26 @@ SemanticValidator.prototype.message = function(errorMessage) {
 };
 
 SemanticValidator.prototype.validate = function(obj) {
-  this.validationRules.forEach(rule => {
-    if (!rule.test(obj[rule.prop])) {
-      this.errors.push(rule.message);
+  let groupedRules = [];
+  this.validationRules.forEach((rule, index) => {
+    if (this.validationRules[index - 1] && this.validationRules[index - 1].or) {
+      groupedRules[groupedRules.length - 1].push(rule);
+    } else {
+      groupedRules.push([rule]);
+    }
+  });
+
+  groupedRules.forEach(groupedRule => {
+    let valid = false;
+    for (let i = 0; i < groupedRule.length; i++) {
+      if (groupedRule[i].test(obj[groupedRule[i].prop])) {
+        valid = true;
+        break;
+      }
+    }
+
+    if (!valid) {
+      this.errors.push(groupedRule[groupedRule.length - 1].message);
     }
   });
 
@@ -47,6 +64,11 @@ SemanticValidator.prototype.validate = function(obj) {
     valid: !this.errors.length,
     errors: this.errors
   };
+};
+
+SemanticValidator.prototype.or = function() {
+  this.validationRules[this.validationRules.length - 1].or = true;
+  return this;
 };
 
 module.exports = SemanticValidator;

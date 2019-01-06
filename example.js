@@ -9,12 +9,15 @@ let validator = new SemanticValidator();
 
 validator
   .addRule('username')
-    .shouldContain('joe')
-    .or().shouldContain('nick')
-    .message('You must named joe or nick.')
+  .shouldContain('joe')
+  .or()
+  .shouldContain('nick')
+  .message('You must named joe or nick.');
+
+validator
   .addRule('email')
-    .shouldContain('.com')
-    .message('You must register using a .com address.');
+  .shouldContain('.com')
+  .message('You must register using a .com address.');
 
 let result = validator.validate(formObject);
 

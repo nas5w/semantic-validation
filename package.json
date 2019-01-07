@@ -2,7 +2,7 @@
   "name": "semantic-validation",
   "version": "0.0.1",
   "description": "Semantic validation for javascript objects.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "jest"
   },

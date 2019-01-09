@@ -1,15 +1,25 @@
 'use strict';
 
-const shouldContain = require('./stringValidation/shouldContain');
+const tests = [require('./stringValidation/shouldContain')];
 
 const SemanticValidator = (function() {
   let errors = [];
   let validationRules = [];
   let currentProp = null;
 
-  function SemanticValidator() {
-    this.shouldContain = shouldContain.bind(this);
+  function addRule(test, message) {
+    validationRules.push({
+      prop: currentProp,
+      message: `${currentProp} ${message}`,
+      test
+    });
   }
+
+  function SemanticValidator() {}
+
+  tests.forEach(test => {
+    test(SemanticValidator, addRule);
+  });
 
   SemanticValidator.prototype.selectProp = function(prop) {
     currentProp = prop;
@@ -32,16 +42,6 @@ const SemanticValidator = (function() {
       valid: !errors.length,
       errors: errors
     };
-  };
-
-  SemanticValidator.prototype.addRule = function(test, message) {
-    validationRules.push({
-      prop: currentProp,
-      message: `${currentProp} ${message}`,
-      test
-    });
-
-    return this;
   };
 
   return SemanticValidator;

@@ -21,7 +21,7 @@ const validator = new SemanticValidator();
 validator
   .addRule('email')
   .shouldContain('@email.com')
-  .message('You must register using a gmail address.');
+  .message('You must register using a email address.');
 
 // Validate the faked object
 const result = validator.validate(formObject);

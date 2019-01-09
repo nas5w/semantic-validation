@@ -1,4 +1,4 @@
-const SemanticValidator = require('../index');
+const SemanticValidator = require('../src/index');
 
 const formObject = {
   email: 'user@email.com'
@@ -6,42 +6,34 @@ const formObject = {
 
 test('Matching contains should be valid', () => {
   const validator = new SemanticValidator();
-
-  validator.addRule('email').shouldContain('@email.com');
-
+  validator.selectProp('email').shouldContain('@email.com');
   expect(validator.validate(formObject).valid).toBe(true);
 });
 
 test('Non-matching contains should invalid', () => {
   const validator = new SemanticValidator();
-
-  validator.addRule('email').shouldContain('@gmail.com');
-
+  validator.selectProp('email').shouldContain('@gmail.com');
   expect(validator.validate(formObject).valid).toBe(false);
 });
 
 test('Non-matching contains due to casing should invalid', () => {
   const validator = new SemanticValidator();
-
-  validator.addRule('email').shouldContain('@Email.com');
-
+  validator.selectProp('email').shouldContain('@Email.com');
   expect(validator.validate(formObject).valid).toBe(false);
 });
 
 test('Matching contains due to case insensitivity should valid', () => {
   const validator = new SemanticValidator();
-
   validator
-    .addRule('email')
+    .selectProp('email')
     .shouldContain('@Email.com', (caseSensitive = false));
-
   expect(validator.validate(formObject).valid).toBe(true);
 });
 
 test('Matching contains should have no error messages', () => {
   const validator = new SemanticValidator();
 
-  validator.addRule('email').shouldContain('@email.com');
+  validator.selectProp('email').shouldContain('@email.com');
 
   expect(validator.validate(formObject).errors.length).toBe(0);
 });
@@ -49,7 +41,7 @@ test('Matching contains should have no error messages', () => {
 test('Non-matching contains should have one error message', () => {
   const validator = new SemanticValidator();
 
-  validator.addRule('email').shouldContain('@gmail.com');
+  validator.selectProp('email').shouldContain('@gmail.com');
 
   expect(validator.validate(formObject).errors.length).toBe(1);
 });
@@ -59,7 +51,7 @@ test('Non-matching contains should show custom error message', () => {
   const customMessage = 'You must use an email.com domain';
 
   validator
-    .addRule('email')
+    .selectProp('email')
     .shouldContain('@gmail.com')
     .message(customMessage);
 

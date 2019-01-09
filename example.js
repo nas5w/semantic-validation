@@ -1,4 +1,4 @@
-const SemanticValidator = require('./index');
+const SemanticValidator = require('./src/index');
 
 let formObject = {
   email: 'name@email.com'
@@ -7,9 +7,10 @@ let formObject = {
 let validator = new SemanticValidator();
 
 validator
-  .addRule('email')
-  .shouldContain('@email.com')
-  .message('You must register using a gmail address.');
+  .selectProp('email')
+  .shouldContain('@gmail.com')
+  .message('You must register using a gmail address.')
+  .shouldContain('name');
 
 let result = validator.validate(formObject);
 

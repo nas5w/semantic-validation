@@ -2,11 +2,11 @@
 
 const tests = [require('./stringValidation/shouldContain')];
 
-let errors;
-let validationRules;
-let currentProp;
-
 const SemanticValidator = (function() {
+  let errors;
+  let validationRules;
+  let currentProp;
+
   function addRule(test, message) {
     validationRules.push({
       prop: currentProp,

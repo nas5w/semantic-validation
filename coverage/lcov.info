@@ -1,6 +1,6 @@
 TN:
 SF:C:\dev\semantic-validation\src\index.js
-FN:9,(anonymous_0)
+FN:5,(anonymous_0)
 FN:10,addRule
 FN:18,SemanticValidator
 FN:24,(anonymous_3)
@@ -19,7 +19,7 @@ FNDA:1,(anonymous_5)
 FNDA:7,(anonymous_6)
 FNDA:7,(anonymous_7)
 DA:3,1
-DA:9,1
+DA:5,1
 DA:11,7
 DA:19,7
 DA:20,7

@@ -8,7 +8,7 @@ function shouldContain(validator, addRule) {
       return input.includes(text);
     };
 
-    addRule(test, `should contain ${text}`);
+    addRule(this, test, `should contain ${text}`);
     return this;
   };
 }

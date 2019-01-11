@@ -32,28 +32,22 @@ test('Matching contains due to case insensitivity should valid', () => {
 
 test('Matching contains should have no error messages', () => {
   const validator = new SemanticValidator();
-
   validator.selectProp('email').shouldContain('@email.com');
-
   expect(validator.validate(formObject).errors.length).toBe(0);
 });
 
 test('Non-matching contains should have one error message', () => {
   const validator = new SemanticValidator();
-
   validator.selectProp('email').shouldContain('@gmail.com');
-
   expect(validator.validate(formObject).errors.length).toBe(1);
 });
 
 test('Non-matching contains should show custom error message', () => {
   const validator = new SemanticValidator();
   const customMessage = 'You must use an email.com domain';
-
   validator
     .selectProp('email')
     .shouldContain('@gmail.com')
     .message(customMessage);
-
   expect(validator.validate(formObject).errors[0]).toBe(customMessage);
 });

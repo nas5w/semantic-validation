@@ -19,7 +19,7 @@ const validator = new SemanticValidator();
 
 // Add rules and custom error messages
 validator
-  .addRule('email')
+  .selectProp('email')
   .shouldContain('@email.com')
   .message('You must register using a email address.');
 
